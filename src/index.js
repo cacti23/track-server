@@ -1,5 +1,6 @@
 require('./models/User');
 require('./models/Track');
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const mongoUri = 'mongodb+srv://admin:admin@cluster0.ph7gm4b.mongodb.net/';
+const mongoUri = process.env.MONGO_URI;
 
 mongoose.connect(mongoUri);
 
